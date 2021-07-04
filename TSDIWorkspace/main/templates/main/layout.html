@@ -7,8 +7,6 @@
       	<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css">
       	<link rel="stylesheet" href="styles.css">
       	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-
    	</head>
 
    	<body>
@@ -16,20 +14,20 @@
       	<h1> TSDI Workspace </h1>
 
       	<div class="pure-menu pure-menu-horizontal">
-    		<ul class="pure-menu-list">
-    			<li class="pure-menu-item">
-		            <a href="#" class="pure-menu-link">About</a>
-		        </li>
-		        <li class="pure-menu-item">
-		            <a href="#" class="pure-menu-link">Workspace</a>
-		        </li>
-		        <li class="pure-menu-item">
-		            <a href="login" class="pure-menu-link">Login</a>
-		        </li>
-		    </ul>
-		</div>
+      		<ul class="pure-menu-list">
+      			<li class="pure-menu-item">
+  		            <a href="{% url 'index' %}" class="pure-menu-link">About</a>
+  		        </li>
+  		        <li class="pure-menu-item">
+  		            <a href="{% url 'workspace' %}" class="pure-menu-link">Workspace</a>
+  		        </li>
+  		        <li class="pure-menu-item">
+  		            <a href="{% url 'login' %}" class="pure-menu-link">Login</a>
+  		        </li>
+  		    </ul>
+		    </div>
 
-        {% block body %}
+        {% block content %}
         {% endblock %}
 
    </body>

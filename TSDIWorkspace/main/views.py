@@ -1,12 +1,18 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
 
 # Create your views here.
 
 
 def index(request):
     return render(request, "main/index.html")
+
+
+
+def workspace(request):
+    return render(request, "main/workspace.html")
 
 
 
@@ -31,6 +37,9 @@ def loginView(request):
                 "message": "Invalid Credentials"
             })
 
+    if request.user.is_authenticated:
+        return render(request, "main/portal.html")
+
     return render(request, "main/login.html")
 
 
@@ -40,3 +49,50 @@ def logoutView(request):
     return render(request, "main/login.html", {
                 "message": "Logged Out"
             })
+
+
+
+def myLease(request):
+    # If no user is signed in, return to login page:
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "main/my_lease.html")
+
+
+
+def bills(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "main/bills.html")
+
+
+
+def serviceRequests(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "main/service_requests.html")
+
+
+
+def mailsAndPackages(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "main/mails_and_packages.html")
+
+
+
+def notifications(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "main/notifications.html")
+
+
+
+def profile(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect(reverse("login"))
+    return render(request, "main/profile.html")
+
+
+
+

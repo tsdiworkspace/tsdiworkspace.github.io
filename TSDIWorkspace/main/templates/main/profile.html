@@ -1,0 +1,10 @@
+{% extends "main/portal.html" %}
+
+{% block sideMenuContent %}
+    <h4>Profile</h4>
+    <ul>
+        <li>Username: {{ request.user.username }}</li>
+        <li>Email: {{ request.user.email }}</li>
+    </ul>
+    <p>Edit personal information</p>
+{% endblock %}
