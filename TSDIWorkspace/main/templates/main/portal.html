@@ -6,7 +6,7 @@
         <li>Username: {{ request.user.username }}</li>
         <li>Email: {{ request.user.email }}</li>
     </ul>
-    <h3>Recent Activities</h3>
+    <h3>Recent Activity</h3>
 
 
 <div class="pure-g">
@@ -15,7 +15,7 @@
     	<div class="pure-menu">
     		<ul class="pure-menu-list">
 		        <li class="pure-menu-item">
-		            <a href="{% url 'myLease' %}" class="pure-menu-link">My Lease</a>
+		            <a href="{% url 'myLeases' %}" class="pure-menu-link">My Leases</a>
 		        </li>
 		        <li class="pure-menu-item">
 		            <a href="{% url 'bills' %}" class="pure-menu-link">Bills</a>

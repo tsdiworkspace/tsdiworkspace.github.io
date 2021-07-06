@@ -2,5 +2,13 @@
 
 {% block sideMenuContent %}
     <h4>Bills</h4>
-    <p>dddddddddd</p>
+
+    {% for bill in bills %}
+        <li>{{ bill.id }}: {{ bill.dueDate }} {{ bill.amount }}</li>
+    {% endfor %}
+
+    paid: true/false
+    rent for Jan Feb...
+    pay button
+
 {% endblock %}

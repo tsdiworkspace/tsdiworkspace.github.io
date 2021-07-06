@@ -1,0 +1,14 @@
+{% extends "main/portal.html" %}
+
+{% block sideMenuContent %}
+
+    <h4>My Leases</h4>
+
+    <h5>Current Lease</h5>
+    <h5>Current Lease</h5>
+
+    {% for lease in leases %}
+        <li>{{ lease.id }}: {{ lease.leaseFrom }} to {{ lease.leaseTo }}</li>
+    {% endfor %}
+
+{% endblock %}

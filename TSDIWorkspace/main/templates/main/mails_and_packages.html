@@ -1,6 +1,11 @@
 {% extends "main/portal.html" %}
 
 {% block sideMenuContent %}
+
     <h4>Mails & Packages</h4>
-    <p>dddddddddd</p>
+
+    {% for mailAndPackage in mailsAndPackages %}
+        <li>{{ mailAndPackage.id }}: {{ mailAndPackage.date }} {{ mailAndPackage.pickedUp }}</li>
+    {% endfor %}
+
 {% endblock %}

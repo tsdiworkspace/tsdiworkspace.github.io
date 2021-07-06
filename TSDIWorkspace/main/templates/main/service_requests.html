@@ -2,5 +2,39 @@
 
 {% block sideMenuContent %}
     <h4>Service Requests</h4>
-    <p>dddddddddd</p>
+
+    {% for serviceRequest in serviceRequests %}
+        <li>{{ serviceRequest.id }}: {{ serviceRequest.description }}</li>
+    {% endfor %}
+
+    <h5>Creat a new service request</h5>
+    name<br />
+    phone<br />
+    email<br />
+
+
+    <form action="{% url 'serviceRequests' %}" method="post">
+        {% csrf_token %}
+
+        <label for="category">Choose a category:</label><br />
+        <select name="category">
+            <option>Maintenance</option>
+            <option>Manangement</option>
+            <option>Other</option>
+        </select><br />
+
+        <label for="description">Please briefly describe your issue:</label><br />
+        <input type="text" name="description" ><br />
+
+        <label for="contactMethod">Preferred contact method:</label><br />
+        <select name="contactMethod">
+            <option>Call</option>
+            <option>Email</option>
+            <option>No preference</option>
+        </select><br />
+
+        <input type="submit">
+
+    </form>
+
 {% endblock %}

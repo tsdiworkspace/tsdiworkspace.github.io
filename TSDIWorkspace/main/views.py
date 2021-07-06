@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from .models import Testing, Lease, Bill, ServiceRequest, MailAndPackage, Notification
 
 # Create your views here.
 
@@ -47,37 +48,46 @@ def loginView(request):
 def logoutView(request):
     logout(request)
     return render(request, "main/login.html", {
-                "message": "Logged Out"
-            })
+        "message": "Logged Out"
+    })
 
 
 
-def myLease(request):
+def myLeases(request):
     # If no user is signed in, return to login page:
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    return render(request, "main/my_lease.html")
+    return render(request, "main/my_leases.html", {
+        "leases": Lease.objects.filter(lessee=request.user)
+    })
 
 
 
 def bills(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    return render(request, "main/bills.html")
+    return render(request, "main/bills.html", {
+        "bills": Bill.objects.filter(lessee=request.user)
+    })
 
 
 
 def serviceRequests(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    return render(request, "main/service_requests.html")
+
+    return render(request, "main/service_requests.html", {
+        "serviceRequests": ServiceRequest.objects.filter(lessee=request.user)
+    })
 
 
 
 def mailsAndPackages(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse("login"))
-    return render(request, "main/mails_and_packages.html")
+    return render(request, "main/mails_and_packages.html", {
+        "mailsAndPackages": MailAndPackage.objects.filter(lessee=request.user)
+    })
 
 
 
